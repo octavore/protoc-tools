@@ -12,11 +12,11 @@ func (m *Page) SetTimestamps(v *Timestamp) {
 	m.Timestamps = v
 }
 
-func (m *Page) SetText(v string) {
+func (m *Page) SetTypeToText(v *string) {
 	m.Type = &Page_Text{Text: v}
 }
 
-func (m *Page) SetNumber(v int64) {
+func (m *Page) SetTypeToNumber(v *int64) {
 	m.Type = &Page_Number{Number: v}
 }
 

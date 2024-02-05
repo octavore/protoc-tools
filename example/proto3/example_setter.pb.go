@@ -4,7 +4,7 @@ func (m *Timestamp) SetCreatedAt(v int64) {
 	m.CreatedAt = v
 }
 
-func (m *Timestamp) SetUpdatedAt(v int64) {
+func (m *Timestamp) SetUpdatedAt(v *int64) {
 	m.UpdatedAt = v
 }
 
@@ -12,12 +12,16 @@ func (m *Page) SetTimestamps(v *Timestamp) {
 	m.Timestamps = v
 }
 
-func (m *Page) SetText(v string) {
+func (m *Page) SetTypeToText(v string) {
 	m.Type = &Page_Text{Text: v}
 }
 
-func (m *Page) SetNumber(v int64) {
+func (m *Page) SetTypeToNumber(v int64) {
 	m.Type = &Page_Number{Number: v}
+}
+
+func (m *Page) SetTypeToBlock(v *Block) {
+	m.Type = &Page_Block{Block: v}
 }
 
 func (m *Page) SetType(v isPage_Type) {
