@@ -1,7 +1,8 @@
 default:
-	go build -o $$PWD/local/bin/protoc-gen-setter ./cmd/protoc-gen-setter
+	go build -o $$PWD/local/bin/protoc-gen-go-svc-interface ./cmd/protoc-gen-go-svc-interface
+	go build -o $$PWD/local/bin/protoc-gen-go-setter ./cmd/protoc-gen-go-setter
 
-proto:
+setter_proto:
 	PATH=$$PWD/local/bin:$$PATH protoc setterpb/setter.proto --go_out=. --go_opt=paths=source_relative
 
 prepare:
@@ -11,11 +12,15 @@ test: default example
 	go build ./example/...
 
 .PHONY: example
-example: default prepare
+example: prepare setter_proto default
 	PATH=$$PWD/local/bin:$$PATH GOBIN=$$PWD/local/bin \
 	protoc \
 	-I $$PWD \
 	example/proto2/example.proto \
 	example/proto3/example.proto \
 	--go_out=. --go_opt=paths=source_relative \
-	--setter_out=. --setter_opt=paths=source_relative
+	--go-setter_out=. --go-setter_opt=paths=source_relative \
+	--go-svc-interface_out=. --go-svc-interface_opt=paths=source_relative
+
+clean:
+	rm example/*/*.pb.go setterpb/*.go local/bin/*

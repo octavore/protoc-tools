@@ -1,4 +1,4 @@
-module github.com/octavore/protoc-gen-setter
+module github.com/octavore/protoc-tools
 
 go 1.21
 

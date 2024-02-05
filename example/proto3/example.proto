@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package example.proto3;
 
-option go_package = "github.com/octavore/protoc-gen-setter/example/proto3";
+option go_package = "github.com/octavore/protoc-tools/example/proto3";
 
 import "google/protobuf/descriptor.proto";
 import "setterpb/setter.proto";
@@ -21,4 +21,8 @@ message Page {
       string text = 11;
       int64 number = 12;
     }
+}
+
+service PageService {
+  rpc GetPage(Timestamp) returns (Page);
 }

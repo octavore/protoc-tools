@@ -7,7 +7,7 @@ import (
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 
-	"github.com/octavore/protoc-gen-setter/setterpb"
+	"github.com/octavore/protoc-tools/setterpb"
 )
 
 func main() {

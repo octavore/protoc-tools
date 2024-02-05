@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package setter;
 
-option go_package = "github.com/octavore/protoc-gen-setter/setterpb";
+option go_package = "github.com/octavore/protoc-tools/setterpb";
 
 import "google/protobuf/descriptor.proto";
 
