@@ -1,8 +1,5 @@
 module github.com/octavore/protoc-gen-setter
 
-go 1.14
+go 1.21
 
-require (
-	github.com/golang/protobuf v1.4.1
-	google.golang.org/protobuf v1.25.0
-)
+require google.golang.org/protobuf v1.32.0

@@ -1,5 +1,5 @@
 default:
-	go build -o $$PWD/local/bin ./cmd/protoc-gen-setter
+	go build -o $$PWD/local/bin/protoc-gen-setter ./cmd/protoc-gen-setter
 
 proto:
 	PATH=$$PWD/local/bin:$$PATH protoc setterpb/setter.proto --go_out=. --go_opt=paths=source_relative
@@ -11,7 +11,7 @@ test: default example
 	go build ./example/...
 
 .PHONY: example
-example:
+example: default prepare
 	PATH=$$PWD/local/bin:$$PATH GOBIN=$$PWD/local/bin \
 	protoc \
 	-I $$PWD \
