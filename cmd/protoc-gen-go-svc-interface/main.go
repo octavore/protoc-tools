@@ -29,8 +29,9 @@ func (s *Plugin) GenerateServices(gen *protogen.Plugin, file *protogen.File) {
 		g.P("type ", svc.GoName, " interface {")
 		for _, met := range svc.Methods {
 			g.P(fmt.Sprintf(
-				"  %s(*%s) (*%s, error)",
+				"  %s(%s, *%s) (*%s, error)",
 				met.GoName,
+				g.QualifiedGoIdent(protogen.GoIdent{GoName: "Context", GoImportPath: "context"}),
 				g.QualifiedGoIdent(met.Input.GoIdent),
 				g.QualifiedGoIdent(met.Output.GoIdent),
 			))

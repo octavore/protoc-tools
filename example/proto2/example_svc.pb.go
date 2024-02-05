@@ -1,5 +1,9 @@
 package proto2
 
+import (
+	context "context"
+)
+
 type PageService interface {
-	GetPage(*Timestamp) (*Page, error)
+	GetPage(context.Context, *Timestamp) (*Page, error)
 }
